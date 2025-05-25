@@ -10,7 +10,8 @@ use App\Http\Controllers\DeclaracaoController;
 use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\NivelController;
 
-/*
+
+use App\Http\Controllers\AuthController;/*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -35,3 +36,11 @@ Route::resource('documentos', DocumentoController::class);
 Route::resource('nivels', NivelController::class);
 Route::resource('turmas', TurmaController::class);
 
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/', function () {
+    return view('home');
+})->middleware('auth');

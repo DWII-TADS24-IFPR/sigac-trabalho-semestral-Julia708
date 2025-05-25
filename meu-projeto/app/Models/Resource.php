@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Resource extends Model
 {
-    use HasFactory;
+    protected $table = 'resources';
+    protected $fillable = ['nome'];
+
+    public function k(){
+        return $this -> hasMany(k::class);
+    }
 }
