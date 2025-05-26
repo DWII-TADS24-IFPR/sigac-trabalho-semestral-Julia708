@@ -14,10 +14,20 @@ class AlunoController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $alunos = Aluno::all();
-        return view('alunos.index')->with('alunos', $alunos);
+{
+    $user = auth()->user();
+
+    if ($user->role->id === 1) {
+        $alunos = Aluno::with('turma', 'curso')->get();
+    } else {
+        $alunos = Aluno::with('turma', 'curso')
+            ->where('user_id', $user->id)
+            ->get();
     }
+
+    return view('alunos.index', compact('alunos'));
+}
+
 
     /**
      * Show the form for creating a new resource.

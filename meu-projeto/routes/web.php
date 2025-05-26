@@ -22,10 +22,6 @@ use App\Http\Controllers\AuthController;/*
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
 
 Route::resource('alunos', AlunoController::class);
 Route::resource('categorias', CategoriaController::class);

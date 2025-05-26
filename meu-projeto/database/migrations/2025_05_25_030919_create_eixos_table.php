@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('eixos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('nome');
             $table->timestamps();
         });
     }

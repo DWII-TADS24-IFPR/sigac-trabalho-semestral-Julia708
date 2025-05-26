@@ -10,7 +10,4 @@ class Role extends Model
     protected $table = 'roles';
     protected $fillable = ['nome'];
 
-    public function k(){
-        return $this -> hasMany(k::class);
-    }
 }

@@ -25,4 +25,9 @@ class Aluno extends Model
     public function declaracoes(){
         return $this -> hasMany(Declaracao::class);
     }
+
+    public function user() {
+    return $this->belongsTo(User::class);
+    }
+
 }

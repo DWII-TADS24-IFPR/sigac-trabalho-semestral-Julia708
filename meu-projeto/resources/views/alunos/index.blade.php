@@ -2,32 +2,41 @@
 
 @section('content')
 
-<h2>Lista de Alunos</h2>
+  <h2>Lista de Alunos</h2>
 
-<table class="table table-bordered text-center align-middle">
-  <thead>
+  <table class="table table-bordered text-center align-middle">
+    <thead>
     <tr>
       <th>Id</th>
       <th>Nome</th>
+
+      @if(auth()->user()->role->id === 1)
       <th>Ação</th>
+    @endif
+
     </tr>
-  </thead>
+    </thead>
 
     <thead>
-        <tr>  
+    <tr>
     <tbody>
-        @foreach($alunos as $aluno)
-            <td>{{ $aluno->id }}</td>
-            <td>{{ $aluno->nome }}</td>
+    @foreach($alunos as $aluno)
+    <td>{{ $aluno->id }}</td>
+    <td>{{ $aluno->nome }}</td>
 
-                <td>
-                    <a class="btn btn-info" href="{{ route('alunos.show', $aluno->id) }}">Mais informações</a>
-                </td>
-            </tr>
-        @endforeach
+    @if(auth()->user()->role->id === 1)
+    <td>
+      <a class="btn btn-info" href="{{ route('alunos.show', $aluno->id) }}">Mais informações</a>
+    </td>
+    @endif
+
+    </tr>
+    @endforeach
     </tbody>
-</table>
+  </table>
 
-<a class="btn btn-primary" href="{{ route('alunos.create') }}">Cadastrar Novo Aluno</a>
+  @if(auth()->user()->role->nome === 'admin')
+    <a href="{{ route('alunos.create') }}" class="btn btn-primary mb-3">Cadastrar Novo Aluno</a>
+  @endif
 
 @endsection
