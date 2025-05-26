@@ -10,7 +10,7 @@ class Eixo extends Model
     protected $table = 'eixos';
     protected $fillable = ['nome'];
 
-    public function k(){
-        return $this -> hasMany(k::class);
+     public function cursos(){
+        return $this -> hasMany(Curso::class);
     }
 }

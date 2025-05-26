@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Eixo;
 
 class EixoSeeder extends Seeder
 {
@@ -12,10 +13,12 @@ class EixoSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('eixos')->insert([
-            ['nome' => 'Tecnologia da Informação'],
-            ['nome' => 'Engenharia'],
+        Eixo::create([
+            'nome' => 'Tecnologia da Informação',
         ]);
 
+        Eixo::create([
+            'nome' => 'Engenharia',
+        ]);
     }
 }

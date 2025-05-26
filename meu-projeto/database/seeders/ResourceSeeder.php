@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Resource;
 
 class ResourceSeeder extends Seeder
 {
@@ -12,10 +13,16 @@ class ResourceSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('resources')->insert([
-            ['nome' => 'alunos'],
-            ['nome' => 'cursos'],
-            ['nome' => 'comprovantes'],
+        Resource::create([
+            'nome' => 'alunos'
+        ]);
+
+        Resource::create([
+            'nome' => 'cursos'
+        ]);
+
+        Resource::create([
+            'nome' => 'comprovantes'
         ]);
 
     }

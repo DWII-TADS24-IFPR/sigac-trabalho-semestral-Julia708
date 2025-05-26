@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Declaracao;
 
 class DeclaracaoSeeder extends Seeder
 {
@@ -12,14 +13,13 @@ class DeclaracaoSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('declaracoes')->insert([
-    [
-        'hash' => Str::random(20),
-        'data' => now(),
-        'aluno_id' => 1,
-        'comprovante_id' => 1,
-    ],
-]);
+        Declaracao::create([
+            'hash' => Str::random(20),
+            'data' => now(),
+            'aluno_id' => 1,
+            'comprovante_id' => 1,
+
+        ]);
 
     }
 }

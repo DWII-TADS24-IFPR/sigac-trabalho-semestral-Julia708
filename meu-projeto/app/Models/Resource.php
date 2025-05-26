@@ -10,7 +10,7 @@ class Resource extends Model
     protected $table = 'resources';
     protected $fillable = ['nome'];
 
-    public function k(){
-        return $this -> hasMany(k::class);
+    public function permissoes(){
+        return $this -> hasMany(Permissao::class);
     }
 }

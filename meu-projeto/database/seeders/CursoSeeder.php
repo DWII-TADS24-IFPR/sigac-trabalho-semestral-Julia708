@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Curso;
 
 class CursoSeeder extends Seeder
 {
@@ -12,8 +13,12 @@ class CursoSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('cursos')->insert([
-            ['nome' => 'Análise e Desenvolvimento de Sistemas', 'sigla' => 'ADS', 'total_horas' => 200, 'nivel_id' => 1, 'eixo_id' => 1],
+        Curso::create([
+            'nome' => 'Análise e Desenvolvimento de Sistemas', 
+            'sigla' => 'ADS', 
+            'total_horas' => 200, 
+            'nivel_id' => 1, 
+            'eixo_id' => 1,
         ]);
 
     }

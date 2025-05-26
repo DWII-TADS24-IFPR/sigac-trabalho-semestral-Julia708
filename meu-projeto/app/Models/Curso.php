@@ -8,10 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Curso extends Model
 {
     protected $table = 'cursos';
-    protected $fillable = ['nome', 'sigla', 'total_horas', 'nivel_id'];
+    protected $fillable = ['nome', 'sigla', 'total_horas', 'nivel_id', 'eixo_id'];
 
     public function nivel(){
         return $this -> belongsTo(Nivel::class);
+    }
+
+    public function eixo(){
+        return $this -> belongsTo(Eixo::class);
     }
 
     public function alunos(){
@@ -25,4 +29,9 @@ class Curso extends Model
     public function turmas(){
         return $this -> hasMany(Turma::class);
     }
+
+    public function users(){
+        return $this -> hasMany(User::class);
+    }
+
 }

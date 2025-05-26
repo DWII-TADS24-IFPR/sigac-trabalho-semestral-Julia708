@@ -13,22 +13,10 @@ class AlunoSeeder extends Seeder
             'nome' => 'Mariana Costa',
             'cpf' => '987.654.321-00',
             'email' => 'mariana@exemplo.com',
-            'senha' => bcrypt('senha456'),
+            'senha' => bcrypt('senha556'),
+            'user_id' => 2,
+            'curso_id' => 2,
             'turma_id' => 2,
-            'curso_id' => 2
         ]);
-
-        Aluno::table('alunos')->insert([
-            [
-                'nome' => 'Fernanda Silva',
-                'cpf' => '555.666.777-88',
-                'email' => 'fernanda@exemplo.com',
-                'senha' => bcrypt('senha123'),
-                'user_id' => 1,
-                'curso_id' => 1,
-                'turma_id' => 1,
-            ],
-        ]);
-
     }
 }

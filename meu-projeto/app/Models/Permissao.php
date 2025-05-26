@@ -10,7 +10,11 @@ class Permissao extends Model
     protected $table = 'permissoes';
     protected $fillable = ['resource_id', 'role_id', 'permissao'];
 
-    public function k(){
-        return $this -> hasMany(k::class);
+    public function resource(){
+        return $this -> belongsTo(Resource::class);
+    }
+
+    public function role(){
+        return $this -> belongsTo(Role::class);
     }
 }

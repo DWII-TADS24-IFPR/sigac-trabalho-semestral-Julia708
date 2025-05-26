@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Documento;
 
 class DocumentoSeeder extends Seeder
 {
@@ -12,18 +13,16 @@ class DocumentoSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('documentos')->insert([
-    [
-        'url' => 'documentos/palestra.pdf',
-        'descricao' => 'Comprovante de participação em palestra',
-        'horas_in' => 10,
-        'status' => 'pendente',
-        'comentario' => '',
-        'horas_out' => null,
-        'categoria_id' => 1,
-        'user_id' => 1,
-    ],
-]);
+        Documento::create([
+            'url' => 'documentos/palestra.pdf',
+            'descricao' => 'Comprovante de participação em palestra',
+            'horas_in' => 10,
+            'status' => 'pendente',
+            'comentario' => '',
+            'horas_out' => null,
+            'categoria_id' => 1,
+            'user_id' => 1,
+        ]);
 
     }
 }

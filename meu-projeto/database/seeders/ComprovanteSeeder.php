@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Comprovante;
 
 class ComprovanteSeeder extends Seeder
 {
@@ -12,15 +13,13 @@ class ComprovanteSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('comprovantes')->insert([
-    [
-        'horas' => 10,
-        'atividade' => 'Participação em palestra',
-        'categoria_id' => 1,
-        'aluno_id' => 1,
-        'user_id' => 1,
-    ],
-]);
+        Comprovante::create([
+                'horas' => 10,
+                'atividade' => 'Participação em palestra',
+                'categoria_id' => 1,
+                'aluno_id' => 1,
+                'user_id' => 1
+        ]);
 
     }
 }
