@@ -14,9 +14,9 @@ class AlunoSeeder extends Seeder
             'cpf' => '987.654.321-00',
             'email' => 'mariana@exemplo.com',
             'senha' => bcrypt('senha556'),
-            'user_id' => 2,
-            'curso_id' => 2,
-            'turma_id' => 2,
+            'role_id' => 2,
+            'curso_id' => 1,
+            'turma_id' => 1,
         ]);
     }
 }

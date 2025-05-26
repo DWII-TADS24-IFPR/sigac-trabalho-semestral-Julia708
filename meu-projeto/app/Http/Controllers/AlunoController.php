@@ -46,16 +46,37 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {
-        Aluno::create([
-            'nome' => $request->nome,
-            'cpf' => $request->cpf,
-            'email' => $request->email,
-            'senha' => bcrypt($request->senha),
-            'curso_id' => $request->curso_id,
-            'turma_id' => $request->turma_id
-        ]);
+           // Validação dos dados
+    $request->validate([
+        'nome' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email',
+        'cpf' => 'required|string|unique:alunos,cpf',
+        'senha' => 'required|string|min:6|confirmed',
+        'curso_id' => 'required|exists:cursos,id',
+        'turma_id' => 'required|exists:turmas,id',
+    ]);
 
-        return redirect()->route('alunos.index');
+    // Cria o usuário
+    $user = User::create([
+        'nome' => $request->nome,
+        'email' => $request->email,
+        'senha' => Hash::make($request->senha),
+        'role_id' => 2, // 2 = Aluno
+        'curso_id' => $request->curso_id,
+    ]);
+
+    // Cria o aluno, vinculando com o usuário
+    Aluno::create([
+        'nome' => $request->nome,
+        'cpf' => $request->cpf,
+        'email' => $request->email,
+        'senha' => Hash::make($request->senha),
+        'user_id' => $user->id,
+        'curso_id' => $request->curso_id,
+        'turma_id' => $request->turma_id,
+    ]);
+
+    return redirect()->route('alunos.index')->with('success', 'Aluno cadastrado com sucesso!');
     }
 
     /**

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Aluno extends Model
 {
     protected $table = 'alunos';
-    protected $fillable = ['nome', 'cpf', 'email', 'senha', 'turma_id', 'curso_id'];
+    protected $fillable = ['nome', 'cpf', 'email', 'senha', 'role_id', 'turma_id', 'curso_id'];
 
     public function turma(){
         return $this -> belongsTo(Turma::class);
@@ -18,8 +18,8 @@ class Aluno extends Model
         return $this -> belongsTo(Curso::class);
     }
 
-    public function user() {
-    return $this->belongsTo(User::class);
+    public function role() {
+    return $this->belongsTo(Role::class);
     }
 
     public function comprovantes(){

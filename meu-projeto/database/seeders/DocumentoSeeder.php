@@ -19,9 +19,8 @@ class DocumentoSeeder extends Seeder
             'horas_in' => 10,
             'status' => 'pendente',
             'comentario' => '',
-            'horas_out' => null,
+            'horas_out' => 20,
             'categoria_id' => 1,
-            'user_id' => 1,
         ]);
 
     }

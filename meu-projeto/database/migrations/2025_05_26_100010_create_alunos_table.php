@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('cpf')->unique();
             $table->string('email')->unique();
             $table->string('senha');
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('role_id')->constrained('roles')->cascadeOnDelete();
             $table->foreignId('curso_id')->constrained('cursos')->cascadeOnDelete();
             $table->foreignId('turma_id')->constrained('turmas')->cascadeOnDelete();
             $table->softDeletes();

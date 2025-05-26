@@ -13,9 +13,12 @@ class NivelSeeder extends Seeder
      */
     public function run(): void
     {
-        Nivel::table('niveis')->insert([
-            ['nome' => 'Graduação'],
-            ['nome' => 'Pós-graduação'],
+        Nivel::create([
+            'nome' => 'Graduação'
+        ]);
+
+        Nivel::create([
+            'nome' => 'Pós-graduação'
         ]);
 
     }

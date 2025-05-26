@@ -18,7 +18,6 @@ class ComprovanteSeeder extends Seeder
                 'atividade' => 'Participação em palestra',
                 'categoria_id' => 1,
                 'aluno_id' => 1,
-                'user_id' => 1
         ]);
 
     }

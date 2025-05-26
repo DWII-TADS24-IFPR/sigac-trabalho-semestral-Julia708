@@ -8,19 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Administrador extends Model
 {
     
-    protected $table = 'alunos';
-    protected $fillable = ['nome', 'email', 'senha'];
+    protected $table = 'administradores';
+    protected $fillable = ['nome', 'email', 'senha', 'role_id'];
 
-    public function turma(){
-        return $this -> belongsTo(Turma::class);
-    }
 
-    public function curso(){
-        return $this -> belongsTo(Curso::class);
-    }
-
-    public function user() {
-    return $this->belongsTo(User::class);
+    public function role() {
+    return $this->belongsTo(Role::class);
     }
 
     public function comprovantes(){

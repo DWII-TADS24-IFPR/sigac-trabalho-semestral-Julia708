@@ -14,11 +14,15 @@ class PermissaoSeeder extends Seeder
     public function run(): void
     {
         Permissao::create([
-            'role_id' => 1, 'resource_id' => 1, 'permission' => true
+            'role_id' => 1, 
+            'resource_id' => 1, 
+            'permissao' => true
         ]);
 
         Permissao::create([
-            'role_id' => 2, 'resource_id' => 1, 'permission' => false
+            'role_id' => 2, 
+            'resource_id' => 1, 
+            'permissao' => false
         ]);
 
     }

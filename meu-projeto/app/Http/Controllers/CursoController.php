@@ -39,6 +39,7 @@ class CursoController extends Controller
             'sigla' => $request->sigla,
             'total_horas' => $request->total_horas,
             'nivel_id' => $request->nivel_id,
+            'eixo_id' => $request->eixo_id,
         ]);
 
         return redirect()->route('cursos.index');

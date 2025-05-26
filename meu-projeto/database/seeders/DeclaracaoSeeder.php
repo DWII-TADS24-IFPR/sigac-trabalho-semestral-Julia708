@@ -14,7 +14,7 @@ class DeclaracaoSeeder extends Seeder
     public function run(): void
     {
         Declaracao::create([
-            'hash' => Str::random(20),
+            'hash' => 'dpo2k3t24t2',
             'data' => now(),
             'aluno_id' => 1,
             'comprovante_id' => 1,

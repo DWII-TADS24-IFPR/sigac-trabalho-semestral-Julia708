@@ -14,10 +14,10 @@ class AdministradorSeeder extends Seeder
     public function run(): void
     {
         Administrador::create([
-            'nome' => 'Mariana Costa',
-            'cpf' => '987.654.321-00',
-            'email' => 'mariana@exemplo.com',
-            'senha' => bcrypt('senha456'),
+            'nome' => 'Sandra Fernandes',
+            'email' => 'sandra@exemplo.com',
+            'senha' => bcrypt('senha123'),
+            'role_id' => 1,
         ]);
     }
 }
