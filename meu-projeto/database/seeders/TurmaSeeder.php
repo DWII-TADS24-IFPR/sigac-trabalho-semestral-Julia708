@@ -12,6 +12,9 @@ class TurmaSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DB::table('turmas')->insert([
+            ['curso_id' => 1, 'ano' => 2024],
+        ]);
+
     }
 }

@@ -12,6 +12,11 @@ class ResourceSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DB::table('resources')->insert([
+            ['nome' => 'alunos'],
+            ['nome' => 'cursos'],
+            ['nome' => 'comprovantes'],
+        ]);
+
     }
 }

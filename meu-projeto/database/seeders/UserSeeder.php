@@ -5,19 +5,20 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DeclaracaoSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('declaracoes')->insert([
+        DB::table('users')->insert([
     [
-        'hash' => Str::random(20),
-        'data' => now(),
-        'aluno_id' => 1,
-        'comprovante_id' => 1,
+        'nome' => 'Admin Principal',
+        'email' => 'admin@ifpr.edu.br',
+        'senha' => bcrypt('admin123'),
+        'role_id' => 1,
+        'curso_id' => 1,
     ],
 ]);
 

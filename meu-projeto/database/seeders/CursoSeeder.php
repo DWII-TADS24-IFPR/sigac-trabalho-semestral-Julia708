@@ -12,6 +12,9 @@ class CursoSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DB::table('cursos')->insert([
+            ['nome' => 'Análise e Desenvolvimento de Sistemas', 'sigla' => 'ADS', 'total_horas' => 200, 'nivel_id' => 1, 'eixo_id' => 1],
+        ]);
+
     }
 }

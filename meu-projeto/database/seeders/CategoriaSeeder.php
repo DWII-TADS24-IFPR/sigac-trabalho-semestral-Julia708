@@ -12,6 +12,9 @@ class CategoriaSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DB::table('categorias')->insert([
+            ['nome' => 'Eventos', 'maximo_horas' => 40, 'curso_id' => 1],
+        ]);
+
     }
 }

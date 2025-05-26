@@ -12,6 +12,10 @@ class EixoSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DB::table('eixos')->insert([
+            ['nome' => 'Tecnologia da Informação'],
+            ['nome' => 'Engenharia'],
+        ]);
+
     }
 }

@@ -12,6 +12,15 @@ class ComprovanteSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        DB::table('comprovantes')->insert([
+    [
+        'horas' => 10,
+        'atividade' => 'Participação em palestra',
+        'categoria_id' => 1,
+        'aluno_id' => 1,
+        'user_id' => 1,
+    ],
+]);
+
     }
 }
