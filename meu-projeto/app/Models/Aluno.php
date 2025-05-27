@@ -13,7 +13,7 @@ class Aluno extends Model
     
     public $incrementing = false;
 
-    protected $fillable = ['user_id', 'cpf', 'role_id', 'turma_id', 'curso_id'];
+    protected $fillable = ['user_id', 'cpf',  'turma_id', 'curso_id'];
 
      public function user(){
         return $this -> belongsTo(User::class);
@@ -25,10 +25,6 @@ class Aluno extends Model
 
     public function curso(){
         return $this -> belongsTo(Curso::class);
-    }
-
-    public function role() {
-    return $this->belongsTo(Role::class);
     }
 
     public function comprovantes(){

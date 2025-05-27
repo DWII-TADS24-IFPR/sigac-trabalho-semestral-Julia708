@@ -35,8 +35,13 @@
             </div>
 
             <div class="mb-3">
-                <label for="senha" class="form-label">Senha:</label>
-                <input type="password" name="senha" id="senha" class="form-control" placeholder="Digite sua senha" required>
+                <label for="password" class="form-label">Senha:</label>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Digite sua senha" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="password_confirmation" class="form-label">Confirme sua senha:</label>
+                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Digite sua senha" required>
             </div>
 
             <div class="mb-3">
@@ -60,7 +65,7 @@
             </div>
 
             <button type="submit" class="btn btn-success">Cadastrar</button>
-            <a href="{{ route('alunos.index') }}" class="btn btn-secondary">Cancelar</a>
+            <a href="{{ route('login') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 @endsection

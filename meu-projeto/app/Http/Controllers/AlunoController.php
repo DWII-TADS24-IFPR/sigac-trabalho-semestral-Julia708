@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Aluno;
 use App\Models\Curso;
 use App\Models\Turma;
+use App\Models\User;
 
 class AlunoController extends Controller
 {
@@ -46,37 +49,33 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {
-           // Validação dos dados
+
     $request->validate([
         'nome' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email',
         'cpf' => 'required|string|unique:alunos,cpf',
-        'senha' => 'required|string|min:6|confirmed',
+        'password' => 'required|string|min:6|confirmed',
         'curso_id' => 'required|exists:cursos,id',
         'turma_id' => 'required|exists:turmas,id',
     ]);
 
-    // Cria o usuário
     $user = User::create([
         'nome' => $request->nome,
         'email' => $request->email,
-        'senha' => Hash::make($request->senha),
-        'role_id' => 2, // 2 = Aluno
-        'curso_id' => $request->curso_id,
+        'password' => Hash::make($request->password),
+        'role_id' => 2,
     ]);
 
-    // Cria o aluno, vinculando com o usuário
     Aluno::create([
-        'nome' => $request->nome,
-        'cpf' => $request->cpf,
-        'email' => $request->email,
-        'senha' => Hash::make($request->senha),
         'user_id' => $user->id,
+        'cpf' => $request->cpf,
         'curso_id' => $request->curso_id,
         'turma_id' => $request->turma_id,
     ]);
 
-    return redirect()->route('alunos.index')->with('success', 'Aluno cadastrado com sucesso!');
+    Auth::login($user);
+
+    return redirect()->route('home')->with('success', 'Aluno cadastrado com sucesso!');
     }
 
     /**
@@ -91,9 +90,10 @@ class AlunoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $user_id)
     {
-        $aluno = Aluno::findOrFail($id);
+        $aluno = Aluno::findOrFail($user_id);
+        $user = User::findOrFail($user_id);
         $cursos = Curso::all();
         $turmas = Turma::with('curso')->get();
         return view('alunos.edit', compact('aluno', 'cursos', 'turmas'));
@@ -102,12 +102,15 @@ class AlunoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $user_id)
     {
-        $aluno = Aluno::findOrFail($id);
-        $aluno->update($request->only('nome', 'cpf', 'email', 'curso_id', 'turma_id'));
+    $user = User::findOrFail($user_id);
+    $user->update($request->only('nome', 'email'));
 
-        return redirect()->route('alunos.index')->with('success', 'Aluno atualizado com sucesso!');
+    $aluno = Aluno::where('user_id', $user_id)->firstOrFail();
+    $aluno->update($request->only('cpf', 'curso_id', 'turma_id'));
+
+    return redirect()->route('alunos.index')->with('success', 'Aluno atualizado com sucesso!');
     }
 
 
@@ -116,8 +119,9 @@ class AlunoController extends Controller
      */
     public function destroy(string $id)
     {
-        $aluno = Aluno::findOrFail($id);
-        $aluno->delete();
+        $user = User::findOrFail($id);
+        $user->delete();
+
 
         return redirect()->route('alunos.index');
     }

@@ -3,16 +3,28 @@
 
 <head>
     <title>SIGAC</title>
+
+    <style>    
+        body {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+    </style>
+
 </head>
+
     @vite(['resources/js/app.js'])
 
 
     <div class="container text-center mt-5">
         <div class="p-5 bg-light rounded shadow">
+
 <body>
 
-    <h2>Login</h2>
-
+    <h1>Login</h1>
         @if ($errors->any())
             <div class="alert alert-danger" style="color:red">
                 <ul>
@@ -36,8 +48,10 @@
             </div>
             
             <button type="submit" class="btn btn-primary">Entrar</button>
-        </form>
+        </form>    
 </body>
+
+            <a href="{{ route('alunos.create') }}" class="btn btn-secondary mb-3">Cadastrar-se</a>
 
     </div>
 </div>

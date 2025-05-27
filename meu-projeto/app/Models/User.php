@@ -16,7 +16,7 @@ class User extends Authenticatable
      * The attributes that are mass assignable.
      *
      */
-    protected $fillable = ['nome', 'email', 'password', 'role'];
+    protected $fillable = ['nome', 'email', 'password', 'role_id'];
 
     public function role(){
     return $this->belongsTo(Role::class);

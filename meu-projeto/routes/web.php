@@ -11,7 +11,8 @@ use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\NivelController;
 
 
-use App\Http\Controllers\AuthController;/*
+use App\Http\Controllers\AuthController;
+/*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/home', function () {
     return view('home');
-})->middleware('auth');
+})->middleware('auth')->name('home');
 
 
 Route::resource('alunos', AlunoController::class);

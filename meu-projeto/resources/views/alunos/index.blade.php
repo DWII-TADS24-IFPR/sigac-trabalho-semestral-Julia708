@@ -10,37 +10,32 @@
       <th>Id</th>
       <th>Nome</th>
       <th>Curso</th>
-
-      @if(auth()->user()->role->id === 1)
       <th>Ação</th>
-    @endif
-
     </tr>
     </thead>
 
     <thead>
-    <tr>
     <tbody>
-    @foreach($alunos as $aluno)
+    <tr>
+      @foreach($alunos as $aluno)
       <td>{{ $aluno->user_id }}</td>
       <td>{{ $aluno->user->nome }}</td>
-      <td>{{ $aluno->curso->nome }}</td>
+      <td>{{ $aluno->curso->nome ?? '-' }}</td>
 
 
-      @if(auth()->user()->role->id === 1)
+      @if(auth()->user()->role->id === 1 || auth()->id() === $aluno->user_id)
       <td>
-      <a class="btn btn-info" href="{{ route('alunos.show', $aluno->user_id) }}">Mais informações</a>
+      <a class="btn btn-info" href="{{ route('alunos.show', $aluno->user_id) }}">Seus dados</a>
       </td>
-      @endif
+    @else
+      <td></td>
+    @endif
 
-    @endforeach
+
     </tr>
-
+    @endforeach
     </tbody>
   </table>
 
-  @if(auth()->user()->role->nome === 'admin')
-    <a href="{{ route('alunos.create') }}" class="btn btn-primary mb-3">Cadastrar Novo Aluno</a>
-  @endif
 
 @endsection
