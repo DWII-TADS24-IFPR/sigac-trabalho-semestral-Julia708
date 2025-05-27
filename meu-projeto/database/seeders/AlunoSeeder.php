@@ -10,11 +10,8 @@ class AlunoSeeder extends Seeder
     public function run()
     {
         Aluno::create([
-            'nome' => 'Mariana Costa',
-            'cpf' => '987.654.321-00',
-            'email' => 'mariana@exemplo.com',
-            'senha' => bcrypt('senha556'),
-            'role_id' => 2,
+            'user_id' => 1,
+            'cpf' => '123-456-789-88',
             'curso_id' => 1,
             'turma_id' => 1,
         ]);

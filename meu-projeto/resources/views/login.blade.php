@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Login</title>
+    <title>SIGAC</title>
 </head>
+    @vite(['resources/js/app.js'])
+
+
+    <div class="container text-center mt-5">
+        <div class="p-5 bg-light rounded shadow">
 <body>
-    <h1>Login</h1>
 
-    @if ($errors->any())
-        <div style="color:red;">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    <h2>Login</h2>
 
-    <form method="POST" action="/login">
-        @csrf
-        <label>Email:</label>
-        <input type="email" name="email" required><br><br>
+        @if ($errors->any())
+            <div class="alert alert-danger" style="color:red">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-        <label>Senha:</label>
-        <input type="password" name="password" required><br><br>
+        <form method="POST" action="/">
+            @csrf
+            <div>
+            <label>Email:</label>
+            <input type="email" name="email" required><br><br>
+            </div>
 
-        <button type="submit">Entrar</button>
-    </form>
+            <div>
+            <label>Senha:</label>
+            <input type="password" name="password" required><br><br>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
 </body>
+
+    </div>
+</div>
 </html>

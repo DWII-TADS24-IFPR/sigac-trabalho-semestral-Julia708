@@ -5,7 +5,7 @@
 @section('content')
 <div class="container text-center mt-5">
     <div class="p-5 bg-light rounded shadow">
-        <h1 class="display-5">Olá! {{ Auth::user()->name }} 👋</h1>
+        <h1 class="display-5">Olá! {{ Auth::user()->nome }} 👋</h1>
         <p class="lead mt-3">Bem-vinda ao <strong>Sistema de Atividades Complementares</strong>.</p>
         <p>Aqui você pode cadastrar seus comprovantes, visualizar horas, emitir declarações e muito mais.</p>
 

@@ -9,11 +9,11 @@ class Administrador extends Model
 {
     
     protected $table = 'administradores';
-    protected $fillable = ['nome', 'email', 'senha', 'role_id'];
+    protected $fillable = ['user_id'];
 
 
-    public function role() {
-    return $this->belongsTo(Role::class);
+    public function user() {
+    return $this->belongsTo(User::class);
     }
 
     public function comprovantes(){

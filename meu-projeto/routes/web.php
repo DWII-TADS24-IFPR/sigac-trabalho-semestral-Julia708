@@ -22,6 +22,14 @@ use App\Http\Controllers\AuthController;/*
 |
 */
 
+Route::get('/', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/home', function () {
+    return view('home');
+})->middleware('auth');
+
 
 Route::resource('alunos', AlunoController::class);
 Route::resource('categorias', CategoriaController::class);
@@ -31,12 +39,3 @@ Route::resource('declaracoes', DeclaracaoController::class);
 Route::resource('documentos', DocumentoController::class);
 Route::resource('nivels', NivelController::class);
 Route::resource('turmas', TurmaController::class);
-
-
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-Route::get('/', function () {
-    return view('home');
-})->middleware('auth');

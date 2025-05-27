@@ -16,7 +16,7 @@ class DeclaracaoSeeder extends Seeder
         Declaracao::create([
             'hash' => 'dpo2k3t24t2',
             'data' => now(),
-            'aluno_id' => 1,
+            'user_id' => 1,
             'comprovante_id' => 1,
 
         ]);
