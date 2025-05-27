@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Aluno extends Model
 {
     protected $table = 'alunos';
+
+    protected $primaryKey = 'user_id';
+    
+    public $incrementing = false;
+
     protected $fillable = ['user_id', 'cpf', 'role_id', 'turma_id', 'curso_id'];
 
      public function user(){
@@ -27,8 +32,10 @@ class Aluno extends Model
     }
 
     public function comprovantes(){
-        return $this -> hasMany(Comprovante::class);
+        return $this -> hasMany(Comprovante::class, 'user_id', 'user_id');
     }
+
+
 
     public function declaracoes(){
         return $this -> hasMany(Declaracao::class);

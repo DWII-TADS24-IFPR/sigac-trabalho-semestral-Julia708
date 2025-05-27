@@ -28,7 +28,7 @@ class ComprovanteController extends Controller
         'horas' => $request->horas,
         'atividade' => $request->atividade,
         'categoria_id' => $request->categoria_id,
-        'aluno_id' => $request->aluno_id,
+        'user_id' => $request->user_id,
         ]);
 
         return redirect()->route('comprovantes.index');

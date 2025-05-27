@@ -82,9 +82,9 @@ class AlunoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $user_id)
     {
-        $aluno = Aluno::findOrFail($id);
+        $aluno = Aluno::findOrFail($user_id);
         return view('alunos.show', compact('aluno'));
     }
 

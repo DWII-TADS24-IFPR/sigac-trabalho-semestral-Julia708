@@ -9,6 +9,7 @@
     <tr>
       <th>Id</th>
       <th>Nome</th>
+      <th>Curso</th>
 
       @if(auth()->user()->role->id === 1)
       <th>Ação</th>
@@ -21,17 +22,20 @@
     <tr>
     <tbody>
     @foreach($alunos as $aluno)
-    <td>{{ $aluno->id }}</td>
-    <td>{{ $aluno->nome }}</td>
+      <td>{{ $aluno->user_id }}</td>
+      <td>{{ $aluno->user->nome }}</td>
+      <td>{{ $aluno->curso->nome }}</td>
 
-    @if(auth()->user()->role->id === 1)
-    <td>
-      <a class="btn btn-info" href="{{ route('alunos.show', $aluno->id) }}">Mais informações</a>
-    </td>
-    @endif
 
-    </tr>
+      @if(auth()->user()->role->id === 1)
+      <td>
+      <a class="btn btn-info" href="{{ route('alunos.show', $aluno->user_id) }}">Mais informações</a>
+      </td>
+      @endif
+
     @endforeach
+    </tr>
+
     </tbody>
   </table>
 
