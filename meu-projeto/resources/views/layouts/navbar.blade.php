@@ -16,33 +16,47 @@
       <a class="nav-link" href="{{ route('alunos.index') }}">Aluno</a>
       </li>
 
+      @if(auth()->user()->role->id === 1)
       <li class="nav-item">
       <a class="nav-link" href="{{ route('categorias.index') }}">Categoria</a>
       </li>
+      @endif
 
+      @if(auth()->user()->role->id === 1)
       <li class="nav-item">
       <a class="nav-link" href="{{ route('comprovantes.index') }}">Comprovante</a>
       </li>
+      @endif
 
+      @if(auth()->user()->role->id === 1)
       <li class="nav-item">
       <a class="nav-link" href="{{ route('cursos.index') }}">Curso</a>
       </li>
+      @endif
 
+      @if(auth()->user()->role->id === 1)
       <li class="nav-item">
       <a class="nav-link" href="{{ route('declaracoes.index') }}">Declaração</a>
       </li>
+      @endif
 
+      @if(auth()->user()->role->id === 1)
       <li class="nav-item">
       <a class="nav-link" href="{{ route('documentos.index') }}">Documento</a>
       </li>
+      @endif
       
+      @if(auth()->user()->role->id === 1)
       <li class="nav-item">
       <a class="nav-link" href="{{ route('nivels.index') }}">Nível</a>
       </li>
+      @endif
       
+      @if(auth()->user()->role->id === 1)
       <li class="nav-item">
       <a class="nav-link" href="{{ route('turmas.index') }}">Turma</a>
       </li>
+      @endif
       
     </ul>
   </div>

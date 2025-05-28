@@ -3,6 +3,8 @@
 @section('title', 'SIGAC')
 
 @section('content')
+
+@if(auth()->user()->role->id === 1)
 <div class="container text-center mt-5">
     <div class="p-5 bg-light rounded shadow">
         <h1 class="display-5">Olá! {{ Auth::user()->nome }} 👋</h1>
@@ -19,4 +21,9 @@
         </div>
     </div>
 </div>
+@else
+        <h1 class="display-5">Olá! {{ Auth::user()->nome }} 👋</h1>
+        <p class="lead mt-3">Bem-vinda ao <strong>Sistema de Atividades Complementares</strong>.</p>
+        <p>Aqui você pode visualizar seus comprovantes, horas, emitir declarações e muito mais.</p>
+@endif
 @endsection

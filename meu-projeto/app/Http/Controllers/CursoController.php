@@ -34,7 +34,7 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        curso::create([
+        Curso::create([
             'nome' => $request->nome,
             'sigla' => $request->sigla,
             'total_horas' => $request->total_horas,
@@ -50,7 +50,7 @@ class CursoController extends Controller
      */
     public function show(string $id)
     {
-        $curso = curso::findOrFail($id);
+        $curso = Curso::findOrFail($id);
         return view('cursos.show', compact('curso'));
     }
 
@@ -59,7 +59,7 @@ class CursoController extends Controller
      */
     public function edit(string $id)
     {
-        $curso = curso::findOrFail($id);
+        $curso = Curso::findOrFail($id);
         $nivels = Nivel::all();
         return view('cursos.edit', compact('curso', 'nivels'));
     }
@@ -69,7 +69,7 @@ class CursoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $curso = curso::findOrFail($id);
+        $curso = Curso::findOrFail($id);
         $curso->update($request->only('nome', 'sigla', 'total_horas', 'nivel_id'));
 
         return redirect()->route('cursos.index')->with('success', 'curso atualizado com sucesso!');
@@ -80,7 +80,7 @@ class CursoController extends Controller
      */
     public function destroy(string $id)
     {
-        $curso = curso::findOrFail($id);
+        $curso = Curso::findOrFail($id);
         $curso->delete();
 
         return redirect()->route('cursos.index')->with('success','Curso excluido com sucesso');
