@@ -14,6 +14,14 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+
+        User::create([
+            'nome' => 'Sandra Fernandes',
+            'email' => 'sandra@exemplo.com',
+            'password' => bcrypt('senha123'),
+            'role_id' => 1,
+        ]);
+
         User::create([
             'nome' => 'Mariana Costa',
             'email' => 'mariana@exemplo.com',
@@ -22,10 +30,10 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'nome' => 'Sandra Fernandes',
-            'email' => 'sandra@exemplo.com',
-            'password' => bcrypt('senha123'),
-            'role_id' => 1,
+            'nome' => 'Maria Santos',
+            'email' => 'maria@exemplo.com',
+            'password' => bcrypt('senha444'),
+            'role_id' => 2,
         ]);
     }
 }

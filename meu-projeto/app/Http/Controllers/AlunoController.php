@@ -108,7 +108,7 @@ class AlunoController extends Controller
     $user->update($request->only('nome', 'email'));
 
     $aluno = Aluno::where('user_id', $user_id)->firstOrFail();
-    $aluno->update($request->only('cpf', 'curso_id', 'turma_id'));
+    $aluno->update($request->only('user_id', 'cpf', 'curso_id', 'turma_id'));
 
     return redirect()->route('alunos.index')->with('success', 'Aluno atualizado com sucesso!');
     }
