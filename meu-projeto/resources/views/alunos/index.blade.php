@@ -23,7 +23,11 @@
       <td>{{ $aluno->curso->nome ?? '-' }}</td>
 
 
-      @if(auth()->user()->role->id === 1 || auth()->id() === $aluno->user_id)
+      @if(auth()->user()->role->id === 1)
+      <td>
+      <a class="btn btn-info" href="{{ route('alunos.show', $aluno->user_id) }}">Mais informações</a>
+      </td>
+    @elseif(auth()->id() === $aluno->user_id)
       <td>
       <a class="btn btn-info" href="{{ route('alunos.show', $aluno->user_id) }}">Seus dados</a>
       </td>
