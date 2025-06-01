@@ -17,7 +17,7 @@ class ComprovanteSeeder extends Seeder
                 'horas' => 10,
                 'atividade' => 'Participação em palestra',
                 'categoria_id' => 1,
-                'user_id' => 1,
+                'user_id' => 2,
         ]);
 
     }
