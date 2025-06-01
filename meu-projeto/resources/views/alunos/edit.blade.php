@@ -19,12 +19,6 @@
             @endif
 
             <div class="mb-3">
-                <label for="user_id" class="form-label">Id de Usuário:</label>
-                <input type="number" name="user_id" id="user_id" class="form-control" value="{{ $aluno->user_id }}"
-                    readonly>
-            </div>
-
-            <div class="mb-3">
                 <label for="nome" class="form-label">Nome:</label>
                 <input type="text" name="nome" id="nome" class="form-control" value="{{ $aluno->user->nome }}" required>
             </div>
@@ -32,7 +26,7 @@
             <div class="mb-3">
                 <label for="cpf" class="form-label">CPF:</label>
                 <input type="text" name="cpf" id="cpf" class="form-control" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
-                    value="{{ $aluno->cpf }}" readonly>
+                    value="{{ $aluno->cpf }}" required>
             </div>
 
             <div class="mb-3">
@@ -66,11 +60,7 @@
 
             <a href="{{ route('alunos.show', $aluno->user_id) }}" class="btn btn-secondary">Cancelar</a>
 
-            <form action="{{ route('alunos.destroy', $aluno->user_id) }}" method="POST" style="display:inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class='btn btn-danger'>Excluir</button>
-            </form>
         </form>
+
     </div>
 @endsection

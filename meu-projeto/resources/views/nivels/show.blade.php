@@ -12,9 +12,14 @@
                 <div class="card-body">
                     <p><strong>nome:</strong> {{ $nivel->nome }}</p>
                 </div>
-            <a class="btn btn-warning" href="{{ route('nivels.edit', $nivel->id) }}">Editar</a>
+                <a class="btn btn-warning" href="{{ route('nivels.edit', $nivel->id) }}">Editar</a>
+                <form action="{{ route('nivels.destroy', $nivel->id) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class='btn btn-danger'>Excluir</button>
+                </form>
             </div>
-             
+
             <div class="card-footer">
                 <a href="{{ route('nivels.index') }}" class="btn btn-secondary">Voltar</a>
 

@@ -19,14 +19,14 @@
     @vite(['resources/js/app.js'])
 
 
+<body>
     <div class="container text-center mt-5">
         <div class="p-5 bg-light rounded shadow">
 
-<body>
 
     <h1>Login</h1>
         @if ($errors->any())
-            <div class="alert alert-danger" style="color:red">
+            <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>

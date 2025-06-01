@@ -22,10 +22,6 @@
 
             <button type="submit" class="btn btn-primary">Atualizar</button>
             <a href="{{ route('turmas.show', $turma->id) }}" class="btn btn-secondary">Cancelar</a>
-            <form action="{{ route('turmas.destroy', $turma->id) }}" method="POST" style="display:inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class='btn btn-danger'>Excluir</button>
-            </form>
+        </form>
     </div>
 @endsection

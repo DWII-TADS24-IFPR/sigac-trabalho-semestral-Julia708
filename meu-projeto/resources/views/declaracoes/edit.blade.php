@@ -30,10 +30,6 @@
 
         <button type="submit" class="btn btn-primary">Atualizar</button>
         <a href="{{ route('declaracoes.show', $declaracao->id) }}" class="btn btn-secondary">Cancelar</a>
-        <form action="{{ route('declaracoes.destroy', $declaracao->id) }}" method="POST" style="display:inline;">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class='btn btn-danger'>Excluir</button>
     </form>
 </div>
 @endsection

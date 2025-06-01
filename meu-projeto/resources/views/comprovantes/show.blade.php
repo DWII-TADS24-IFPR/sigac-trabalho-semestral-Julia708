@@ -13,9 +13,14 @@
                     <p><strong>Horas:</strong> {{ $comprovante->horas }}</p>
                     <p><strong>Categoria:</strong> {{ $comprovante->categoria_id }}</p>
                 </div>
-            <a class="btn btn-warning" href="{{ route('comprovantes.edit', $comprovante->id) }}">Editar</a>
+                <a class="btn btn-warning" href="{{ route('comprovantes.edit', $comprovante->id) }}">Editar</a>
+                <form action="{{ route('comprovantes.destroy', $comprovante->id) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class='btn btn-danger'>Excluir</button>
+                </form>
             </div>
-            
+
             <div class="card-footer">
                 <a href="{{ route('comprovantes.index') }}" class="btn btn-secondary">Voltar</a>
 

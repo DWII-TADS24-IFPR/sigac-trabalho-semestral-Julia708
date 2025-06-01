@@ -14,9 +14,14 @@
                     <p><strong>Total de horas:</strong> {{ $curso->total_horas }}</p>
                     <p><strong>Id do nivel:</strong> {{ $curso->nivel_id }}</p>
                 </div>
-            <a class="btn btn-warning" href="{{ route('cursos.edit', $curso->id) }}">Editar</a>
+                <a class="btn btn-warning" href="{{ route('cursos.edit', $curso->id) }}">Editar</a>
+                <form action="{{ route('cursos.destroy', $curso->id) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class='btn btn-danger'>Excluir</button>
+                </form>
             </div>
-             
+
             <div class="card-footer">
                 <a href="{{ route('cursos.index') }}" class="btn btn-secondary">Voltar</a>
 

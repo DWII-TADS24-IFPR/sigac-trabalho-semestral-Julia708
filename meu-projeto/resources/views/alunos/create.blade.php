@@ -1,6 +1,13 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
 
-@section('content')
+@vite(['resources/js/app.js'])
+
+<head>
+    <title>SIGAC</title>
+</head>
+
+<body>
     <div class="container mt-5">
         <h2>Cadastrar Aluno</h2>
 
@@ -36,12 +43,14 @@
 
             <div class="mb-3">
                 <label for="password" class="form-label">Senha:</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Digite sua senha" required>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Digite sua senha"
+                    required>
             </div>
 
             <div class="mb-3">
                 <label for="password_confirmation" class="form-label">Confirme sua senha:</label>
-                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Digite sua senha" required>
+                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
+                    placeholder="Digite sua senha" required>
             </div>
 
             <div class="mb-3">
@@ -64,8 +73,10 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-success">Cadastrar</button>
-            <a href="{{ route('login') }}" class="btn btn-secondary">Cancelar</a>
-        </form>
-    </div>
-@endsection
+</body>
+<button type="submit" class="btn btn-success">Cadastrar</button>
+<a href="{{ route('login') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+</div>
+
+</html>

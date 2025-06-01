@@ -13,9 +13,14 @@
                     <p><strong>nome:</strong> {{ $turma->ano }}</p>
                     <p><strong>id da turma:</strong> {{ $turma->curso_id }}</p>
                 </div>
-            <a class="btn btn-warning" href="{{ route('turmas.edit', $turma->id) }}">Editar</a>
+                <a class="btn btn-warning" href="{{ route('turmas.edit', $turma->id) }}">Editar</a>
+                <form action="{{ route('turmas.destroy', $turma->id) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class='btn btn-danger'>Excluir</button>
+                </form>
             </div>
-             
+
             <div class="card-footer">
                 <a href="{{ route('turmas.index') }}" class="btn btn-secondary">Voltar</a>
 

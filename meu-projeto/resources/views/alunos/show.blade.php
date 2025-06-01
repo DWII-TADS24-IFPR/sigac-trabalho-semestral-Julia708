@@ -17,6 +17,11 @@
                 </div>
                 @if(auth()->user()->role->id === 1)
                     <a class="btn btn-warning" href="{{ route('alunos.edit', $aluno->user_id) }}">Editar</a>
+                    <form action="{{ route('alunos.destroy', $aluno->user_id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class='btn btn-danger'>Excluir</button>
+                    </form>
                 @endif
             </div>
             <h3 class="mt-4">Comprovantes</h3>

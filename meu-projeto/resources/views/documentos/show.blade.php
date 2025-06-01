@@ -17,9 +17,14 @@
                     <p><strong>horas out:</strong> {{ $documento->horas_out }}</p>
                     <p><strong>Id do categoria:</strong> {{ $documento->categoria_id }}</p>
                 </div>
-            <a class="btn btn-warning" href="{{ route('documentos.edit', $documento->id) }}">Editar</a>
+                <a class="btn btn-warning" href="{{ route('documentos.edit', $documento->id) }}">Editar</a>
+                <form action="{{ route('documentos.destroy', $documento->id) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class='btn btn-danger'>Excluir</button>
+                </form>
             </div>
-             
+
             <div class="card-footer">
                 <a href="{{ route('documentos.index') }}" class="btn btn-secondary">Voltar</a>
 

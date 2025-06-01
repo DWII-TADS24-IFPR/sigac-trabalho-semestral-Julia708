@@ -14,9 +14,14 @@
                     <p><strong>aluno:</strong> {{ $declaracao->aluno_id }}</p>
                     <p><strong>comprovante:</strong> {{ $declaracao->comprovante_id }}</p>
                 </div>
-            <a class="btn btn-warning" href="{{ route('declaracoes.edit', $declaracao->id) }}">Editar</a>
+                <a class="btn btn-warning" href="{{ route('declaracoes.edit', $declaracao->id) }}">Editar</a>
+                <form action="{{ route('declaracoes.destroy', $declaracao->id) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class='btn btn-danger'>Excluir</button>
+                </form>
             </div>
-             
+
             <div class="card-footer">
                 <a href="{{ route('declaracoes.index') }}" class="btn btn-secondary">Voltar</a>
 

@@ -13,12 +13,16 @@
                     <p><strong>Horas:</strong> {{ $categoria->max_horas }}</p>
                     <p><strong>Curso:</strong> {{ $categoria->curso_id }}</p>
                 </div>
-            <a class="btn btn-warning" href="{{ route('categorias.edit', $categoria->id) }}">Editar</a>
+                <a class="btn btn-warning" href="{{ route('categorias.edit', $categoria->id) }}">Editar</a>
+                <form action="{{ route('categorias.destroy', $categoria->id) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class='btn btn-danger'>Excluir</button>
+                </form>
             </div>
-            
+
             <div class="card-footer">
                 <a href="{{ route('categorias.index') }}" class="btn btn-secondary">Voltar</a>
-
             </div>
         </div>
 @endsection
