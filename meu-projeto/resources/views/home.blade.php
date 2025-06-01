@@ -9,7 +9,7 @@
     <div class="p-5 bg-light rounded shadow">
         <h1 class="display-5">Olá! {{ Auth::user()->nome }} 👋</h1>
         <p class="lead mt-3">Bem-vinda ao <strong>Sistema de Atividades Complementares</strong>.</p>
-        <p>Aqui você pode cadastrar seus comprovantes, visualizar horas, emitir declarações e muito mais.</p>
+        <p>Aqui você pode cadastrar comprovantes, visualizar horas, emitir declarações e muito mais.</p>
 
         <div class="mt-4">
             <a href="{{ route('alunos.index') }}" class="btn btn-primary btn-lg me-2">
@@ -22,8 +22,18 @@
     </div>
 </div>
 @else
+        <div class="container text-center mt-5">
+    <div class="p-5 bg-light rounded shadow">
         <h1 class="display-5">Olá! {{ Auth::user()->nome }} 👋</h1>
         <p class="lead mt-3">Bem-vinda ao <strong>Sistema de Atividades Complementares</strong>.</p>
         <p>Aqui você pode visualizar seus comprovantes, horas, emitir declarações e muito mais.</p>
+
+        <div class="mt-4">
+            <a href="{{ route('alunos.index') }}" class="btn btn-primary btn-lg me-2">
+                📚 Ver seus dados
+            </a>
+        </div>
+    </div>
+</div>
 @endif
 @endsection
