@@ -30,7 +30,10 @@
 
         <div class="mt-4">
             <a href="{{ route('alunos.index') }}" class="btn btn-primary btn-lg me-2">
-                📚 Ver seus dados
+                📚 Ver Seus Dados
+            </a>
+            <a href="" class="btn btn-primary btn-lg me-2">
+                Solicitar Horas
             </a>
         </div>
     </div>

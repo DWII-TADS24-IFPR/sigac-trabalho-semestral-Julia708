@@ -9,9 +9,8 @@ use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\DeclaracaoController;
 use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\NivelController;
-
-
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SolicitacaoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,3 +39,4 @@ Route::resource('declaracoes', DeclaracaoController::class);
 Route::resource('documentos', DocumentoController::class);
 Route::resource('nivels', NivelController::class);
 Route::resource('turmas', TurmaController::class);
+Route::resource('solicitacoes', SolicitacaoController::class)->middleware('auth');

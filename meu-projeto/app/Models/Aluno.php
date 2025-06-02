@@ -31,6 +31,10 @@ class Aluno extends Model
         return $this -> hasMany(Comprovante::class, 'user_id', 'user_id');
     }
 
+    public function solicitacoes(){
+        return $this -> hasMany(Comprovante::class);
+    }
+
 
 
     public function declaracoes(){
