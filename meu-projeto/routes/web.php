@@ -39,4 +39,4 @@ Route::resource('declaracoes', DeclaracaoController::class);
 Route::resource('documentos', DocumentoController::class);
 Route::resource('nivels', NivelController::class);
 Route::resource('turmas', TurmaController::class);
-Route::resource('solicitacoes', SolicitacaoController::class)->middleware('auth');
+Route::resource('solicitacoes', SolicitacaoController::class);

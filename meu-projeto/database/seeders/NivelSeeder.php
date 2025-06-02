@@ -20,6 +20,5 @@ class NivelSeeder extends Seeder
         Nivel::create([
             'nome' => 'Pós-graduação'
         ]);
-
     }
 }

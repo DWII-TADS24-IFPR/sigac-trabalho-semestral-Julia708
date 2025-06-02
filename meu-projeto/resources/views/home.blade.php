@@ -21,6 +21,7 @@
         </div>
     </div>
 </div>
+
 @else
         <div class="container text-center mt-5">
     <div class="p-5 bg-light rounded shadow">
@@ -32,8 +33,8 @@
             <a href="{{ route('alunos.index') }}" class="btn btn-primary btn-lg me-2">
                 📚 Ver Seus Dados
             </a>
-            <a href="" class="btn btn-primary btn-lg me-2">
-                Solicitar Horas
+            <a href="{{ route('solicitacoes.create') }}" class="btn btn-primary btn-lg me-2">
+                🕓 Solicitar Horas
             </a>
         </div>
     </div>

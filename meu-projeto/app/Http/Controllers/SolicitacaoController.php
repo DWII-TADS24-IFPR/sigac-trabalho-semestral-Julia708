@@ -3,84 +3,72 @@
 namespace App\Http\Controllers;
 
 use App\Models\Solicitacao;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SolicitacaoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $solicitacoes = Solicitacao::with('aluno')->get();
+        return view('solicitacoes.index', compact('solicitacoes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('solicitacoes.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
-{
-    $request->validate([
-        'descricao' => 'required|string',
-        'carga_horaria' => 'required|integer|min:1',
-        'arquivo' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
-    ]);
+    {
+        $request->validate([
+            'descricao' => 'required|string',
+            'carga_horaria' => 'required|integer|min:1',
+            'arquivo' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
+        ]);
 
-    $arquivoPath = null;
+        $arquivoPath = null;
 
-    if ($request->hasFile('arquivo')) {
-        $arquivoPath = $request->file('arquivo')->store('comprovantes', 'public');
+        if ($request->hasFile('arquivo')) {
+            $arquivoPath = $request->file('arquivo')->store('comprovantes', 'public');
+        }
+
+        Solicitacao::create([
+            'user_id' => auth()->user()->aluno->user_id,
+            'descricao' => $request->descricao,
+            'carga_horaria' => $request->carga_horaria,
+            'arquivo' => $arquivoPath,
+            'status' => 'pendente', 
+        ]);
+
+        return redirect()->route('solicitacoes.index')->with('success', 'Solicitação enviada com sucesso!');
     }
 
-    Solicitacao::create([
-        'aluno_id' => auth()->user()->aluno->id,
-        'descricao' => $request->descricao,
-        'carga_horaria' => $request->carga_horaria,
-        'arquivo' => $arquivoPath,
-    ]);
-
-    return redirect()->back()->with('success', 'Solicitação enviada com sucesso!');
-}
-
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Solicitacao $solicitacao)
     {
-        //
+        return view('solicitacoes.show', compact('solicitacao'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Solicitacao $solicitacao)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Solicitacao $solicitacao)
     {
-        //
+        $request->validate([
+            'status' => 'required|in:aprovada,rejeitada,pendente',
+        ]);
+
+        $solicitacao->update(['status' => $request->status]);
+
+        return redirect()->route('solicitacoes.index')->with('success', 'Solicitação atualizada com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // Excluir uma solicitação (opcional)
     public function destroy(Solicitacao $solicitacao)
     {
-        //
+        if ($solicitacao->arquivo) {
+            Storage::disk('public')->delete($solicitacao->arquivo);
+        }
+
+        $solicitacao->delete();
+
+        return redirect()->back()->with('success', 'Solicitação excluída.');
     }
 }

@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('solicitacoes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('aluno_id')->constrained('alunos')->onDelete('cascade');
+            $table->foreignId('user_id')->references('user_id')->on('alunos')->onDelete('cascade');
             $table->string('descricao');
             $table->integer('carga_horaria');
             $table->string('arquivo')->nullable();
