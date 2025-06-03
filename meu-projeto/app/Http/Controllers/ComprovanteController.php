@@ -4,11 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Models\Comprovante;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 use App\Models\Aluno;
 use App\Models\Categoria;
+use Dompdf\Dompdf;
 
 class ComprovanteController extends Controller
 {
+
+    function emitirRelatorio(){
+
+        $dados = ['curso'=> 'Analise de sistema',
+                  'alunos' => ['joal','luana','russi'],
+                  'duracao' => 4
+        ];
+
+        $html = View::make('relatorio.curso', ['dados' => $dados])->render();
+
+        $dompdf = new Dompdf();
+
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4', 'landscape');
+
+        $dompdf->render();
+        
+        $dompdf->stream();
+
+    }
+
     public function index()
     {
         $comprovantes = Comprovante::all();

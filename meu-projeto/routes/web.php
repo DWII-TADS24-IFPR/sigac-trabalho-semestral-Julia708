@@ -40,3 +40,7 @@ Route::resource('documentos', DocumentoController::class);
 Route::resource('nivels', NivelController::class);
 Route::resource('turmas', TurmaController::class);
 Route::resource('solicitacoes', SolicitacaoController::class);
+
+Route::get('/graficos', function (){
+    return view('graficos.index');
+})->name('graficos');
