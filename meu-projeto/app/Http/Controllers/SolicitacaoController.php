@@ -34,7 +34,7 @@ class SolicitacaoController extends Controller
         }
 
         Solicitacao::create([
-            'user_id' => auth()->user()->aluno->user_id,
+            'user_id' => auth()->id(),
             'descricao' => $request->descricao,
             'carga_horaria' => $request->carga_horaria,
             'arquivo' => $arquivoPath,

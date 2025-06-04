@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('descricao');
             $table->integer('carga_horaria');
             $table->string('arquivo')->nullable();
-            $table->enum('status', ['pendente', 'aprovado', 'rejeitado'])->default('pendente');
+            $table->enum('status', ['pendente', 'aprovada', 'rejeitada'])->default('pendente');
             $table->text('observacao')->nullable();
             $table->timestamps();
         });
