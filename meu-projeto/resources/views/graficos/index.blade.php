@@ -1,63 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@extends('layouts.app')
 
-    <!-- Google Chart / Importação - Arquivo Remoto
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-     Google Chart / Importação - Arquivo Local
-    <script type="text/javascript" src="{{asset('js/google-chart-loader.js')}}"></script> -->
+@section('content')
+<div class="container">
+    <h2>Horas Complementares por Turma</h2>
 
-    <title>Document</title>
-</head>
-<body>
-<html>
-  <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
-    google.charts.load('current', {packages:['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-  function drawChart() {
-    var oldData = google.visualization.arrayToDataTable([
-      ['Name', 'Popularity'],
-      ['Cesar', 250],
-      ['Rachel', 4200],
-      ['Patrick', 2900],
-      ['Eric', 8200]
-    ]);
+    <form method="GET" action="{{ route('graficos.index') }}" class="mb-4">
+        <label for="turma_id">Selecione a Turma:</label>
+        <select name="turma_id" id="turma_id" class="form-control">
+            <option value="">Selecione uma turma</option>
+                    @foreach ($turmas as $turma)
+                        <option value="{{ $turma->id }}">{{ $turma->ano }}</option>
+                    @endforeach
+        </select>
+        <button type="submit" class="btn btn-primary mt-2">Ver Gráfico</button>
+    </form>
 
-    var newData = google.visualization.arrayToDataTable([
-      ['Name', 'Popularity'],
-      ['Cesar', 370],
-      ['Rachel', 600],
-      ['Patrick', 700],
-      ['Eric', 1500]
-    ]);
+    @if($dados)
+        <canvas id="graficoHoras"></canvas>
+    @endif
+</div>
 
-    var colChartBefore = new google.visualization.ColumnChart(document.getElementById('colchart_before'));
-    var colChartAfter = new google.visualization.ColumnChart(document.getElementById('colchart_after'));
-    var colChartDiff = new google.visualization.ColumnChart(document.getElementById('colchart_diff'));
-    var barChartDiff = new google.visualization.BarChart(document.getElementById('barchart_diff'));
-
-    var options = { legend: { position: 'top' } };
-
-    colChartBefore.draw(oldData, options);
-    colChartAfter.draw(newData, options);
-
-    var diffData = colChartDiff.computeDiff(oldData, newData);
-    colChartDiff.draw(diffData, options);
-    barChartDiff.draw(diffData, options);
-  }
+@if($dados)
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('graficoHoras').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {!! json_encode(array_column($dados, 'nome')) !!},
+            datasets: [{
+                label: 'Horas Aprovadas',
+                data: {!! json_encode(array_column($dados, 'horas')) !!},
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
 </script>
-
-<span id='colchart_before' style='width: 450px; height: 250px; display: inline-block'></span>
-<span id='colchart_after' style='width: 450px; height: 250px; display: inline-block'></span>
-<span id='colchart_diff' style='width: 450px; height: 250px; display: inline-block'></span>
-<span id='barchart_diff' style='width: 450px; height: 250px; display: inline-block'></span>
-  </head>
-  <body>
-    <div id="table_div"></div>
-  </body>
-</html>
+@endif
+@endsection

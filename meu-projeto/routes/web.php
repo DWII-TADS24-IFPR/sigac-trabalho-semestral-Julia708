@@ -11,6 +11,7 @@ use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\NivelController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SolicitacaoController;
+use App\Http\Controllers\GraficoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,11 +40,9 @@ Route::resource('declaracoes', DeclaracaoController::class);
 Route::resource('documentos', DocumentoController::class);
 Route::resource('nivels', NivelController::class);
 Route::resource('turmas', TurmaController::class);
+Route::resource('graficos', GraficoController::class);
 Route::resource('solicitacoes', SolicitacaoController::class)->parameters([
     'solicitacoes' => 'solicitacao'
 ]);
 
-Route::get('/graficos', function (){
-    return view('graficos.index');
-})->name('graficos');
 

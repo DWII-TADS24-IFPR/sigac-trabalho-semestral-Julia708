@@ -65,6 +65,12 @@
       </li>
     @endif
 
+    @if(auth()->user()->role->id === 1)
+      <li class="nav-item">
+      <a class="nav-link" href="{{ route('graficos.index') }}">- Gráfico -</a>
+      </li>
+    @endif
+
       @if(auth()->user()->role->id === 2)
       <li class="nav-item">
       <a class="nav-link" href="{{ route('solicitacoes.index') }}">- Minhas Solicitações -</a>
